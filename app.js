@@ -1,7 +1,3 @@
-const express = require('express');
-const app = express();
-const NodeMediaServer = require('node-media-server');
-
 const config = {
     rtmp: {
         port: 1935,
@@ -16,7 +12,7 @@ const config = {
         allow_origin: '*'
     },
     trans: {
-        ffmpeg: '/usr/local/bin/ffmpeg', 
+        ffmpeg: '/usr/bin/ffmpeg',  
         tasks: [
             {
                 app: 'live',
@@ -28,6 +24,3 @@ const config = {
         ]
     }    
 };
-
-const nms = new NodeMediaServer(config);
-nms.run();
