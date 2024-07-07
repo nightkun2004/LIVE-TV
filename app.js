@@ -2,10 +2,6 @@ const express = require('express');
 const app = express();
 const NodeMediaServer = require('node-media-server');
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
-
 const config = {
     rtmp: {
         port: 1935,
@@ -20,7 +16,7 @@ const config = {
         allow_origin: '*'
     },
     trans: {
-        ffmpeg: 'C:/fFmpeg/ffmpeg.exe',
+        ffmpeg: '/usr/local/bin/ffmpeg', 
         tasks: [
             {
                 app: 'live',
@@ -35,7 +31,3 @@ const config = {
 
 const nms = new NodeMediaServer(config);
 nms.run();
-
-const server = app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-});
